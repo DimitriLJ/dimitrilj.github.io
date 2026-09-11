@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dimitri Ljepic | Mathematics Tutor & Computer Science Student</title>
+
+    <style>
+        /* =========================
+           BASIC SETUP
+           ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #172033;
+            background: #f8fafc;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: 0 auto;
+        }
+
+
+        /* =========================
+           NAVIGATION
+           ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(248, 250, 252, 0.92);
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .nav-container {
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #475569;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+
+        /* =========================
+           HERO
+           ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 120px 0 80px;
+
+            background:
+                radial-gradient(circle at 80% 20%, #dbeafe 0%, transparent 35%),
+                #f8fafc;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+
+            margin-bottom: 20px;
+            padding: 7px 13px;
+
+            border-radius: 999px;
+
+            background: #dbeafe;
+            color: #1d4ed8;
+
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            font-size: 1.25rem;
+            color: #64748b;
+
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 13px 22px;
+
+            border-radius: 8px;
+
+            font-weight: 600;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background: #2563eb;
+            color: white;
+
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .button-secondary {
+            background: white;
+            color: #172033;
+
+            border: 1px solid #cbd5e1;
+        }
+
+
+        /* =========================
+           SECTIONS
+           ========================= */
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            color: #2563eb;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            letter-spacing: -0.03em;
+
+            margin-bottom: 15px;
+        }
+
+        .section-intro {
+            max-width: 650px;
+            color: #64748b;
+
+            margin-bottom: 45px;
+        }
+
+
+        /* =========================
+           TUTORING
+           ========================= */
+
+        #tutoring {
+            background: white;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px;
+
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+
+            background: #ffffff;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #64748b;
+        }
+
+
+        /* =========================
+           ABOUT
+           ========================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #64748b;
+            margin-bottom: 18px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .stat {
+            padding: 25px;
+
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            display: block;
+
+            font-size: 2rem;
+            font-weight: 700;
+
+            color: #2563eb;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+
+        /* =========================
+           PORTFOLIO
+           ========================= */
+
+        #portfolio {
+            background: #0f172a;
+            color: white;
+        }
+
+        #portfolio .section-label {
+            color: #60a5fa;
+        }
+
+        #portfolio .section-intro {
+            color: #94a3b8;
+        }
+
+        .project {
+            padding: 30px;
+
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 14px;
+        }
+
+        .project h3 {
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+
+            padding: 5px 9px;
+            margin: 3px;
+
+            border-radius: 5px;
+
+            background: #334155;
+            color: #cbd5e1;
+
+            font-size: 0.75rem;
+        }
+
+
+        /* =========================
+           CONTACT
+           ========================= */
+
+        #contact {
+            background: white;
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-box p {
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .email {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            padding: 30px 0;
+
+            background: #0f172a;
+            color: #94a3b8;
+
+            text-align: center;
+
+            font-size: 0.85rem;
+        }
+
+
+        /* =========================
+           MOBILE
+           ========================= */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links li:nth-child(2) {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+         ========================= -->
+
+    <nav>
+        <div class="container nav-container">
+
+            <a href="#home" class="logo">
+                Dimitri.
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#tutoring">Tutoring</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- =========================
+         HERO
+         ========================= -->
+
+    <main>
+
+        <section id="home" class="hero">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <div class="eyebrow">
+                        Mathematics · Computer Science · Tutoring
+                    </div>
+
+                    <h1>
+                        Making difficult ideas
+                        <span>make sense.</span>
+                    </h1>
+
+                    <p>
+                        I'm Dimitri, a Mathematics with Computer Science student
+                        at the University of Southampton and an experienced tutor
+                        in Mathematics, Further Mathematics, Statistics and Physics.
+                    </p>
+
+                    <div class="buttons">
+
+                        <a href="#tutoring" class="button button-primary">
+                            Tutoring
+                        </a>
+
+                        <a href="#portfolio" class="button button-secondary">
+                            View my work
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TUTORING
+             ========================= -->
+
+        <section id="tutoring">
+
+            <div class="container">
+
+                <div class="section-label">
+                    Tutoring
+                </div>
+
+                <h2 class="section-title">
+                    Mathematics without the memorisation.
+                </h2>
+
+                <p class="section-intro">
+                    I have been tutoring since 2020, working with students from
+                    GCSE through to first-year university level. My focus is on
+                    understanding why things work, developing problem-solving
+                    skills, and building confidence.
+                </p>
+
+
+                <div class="cards">
+
+                    <div class="card">
+
+                        <div class="card-icon">∑</div>
+
+                        <h3>Mathematics</h3>
+
+                        <p>
+                            GCSE, IGCSE, A-Level and introductory university
+                            mathematics, including pure mathematics and
+                            problem solving.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-icon">∫</div>
+
+                        <h3>Further Mathematics</h3>
+
+                        <p>
+                            Support with advanced A-Level topics, deeper
+                            mathematical reasoning and challenging problems.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-icon">σ</div>
+
+                        <h3>Statistics & Physics</h3>
+
+                        <p>
+                            Statistics and Physics support with an emphasis on
+                            understanding concepts and applying them effectively
+                            in exam questions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+             ========================= -->
+
+        <section id="about">
+
+            <div class="container">
+
+                <div class="about-grid">
+
+                    <div class="about-text">
+
+                        <div class="section-label">
+                            About me
+                        </div>
+
+                        <h2 class="section-title">
+                            Mathematics, computing and curiosity.
+                        </h2>
+
+                        <p>
+                            I'm currently studying Mathematics with Computer
+                            Science at the University of Southampton, where I
+                            am predicted a First and have been recognised on
+                            the Dean's List for outstanding academic achievement.
+                        </p>
+
+                        <p>
+                            Outside university, I enjoy exploring the connection
+                            between mathematics and computing — from numerical
+                            modelling and visualisation to machine learning.
+                        </p>
+
+                        <p>
+                            As a tutor, I aim to break complicated ideas into
+                            intuitive pieces and help students develop the
+                            confidence to solve unfamiliar problems themselves.
+                        </p>
+
+                    </div>
+
+
+                    <div class="stats">
+
+                        <div class="stat">
+
+                            <span class="stat-number">
+                                6+
+                            </span>
+
+                            <span class="stat-label">
+                                Years tutoring
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <span class="stat-number">
+                                1st
+                            </span>
+
+                            <span class="stat-label">
+                                Predicted degree result
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <span class="stat-number">
+                                A*
+                            </span>
+
+                            <span class="stat-label">
+                                A-Level Mathematics
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <span class="stat-number">
+                                2×
+                            </span>
+
+                            <span class="stat-label">
+                                Dean's List recognition
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PORTFOLIO
+             ========================= -->
+
+        <section id="portfolio">
+
+            <div class="container">
+
+                <div class="section-label">
+                    Portfolio
+                </div>
+
+                <h2 class="section-title">
+                    Things I've built.
+                </h2>
+
+                <p class="section-intro">
+                    A selection of mathematical and computing projects exploring
+                    programming, modelling, machine learning and visualisation.
+                </p>
+
+
+                <div class="cards">
+
+
+                    <div class="project">
+
+                        <h3>
+                            Language Model Development
+                        </h3>
+
+                        <p>
+                            Building a neural language model from scratch using
+                            Python and PyTorch, exploring the mathematics,
+                            statistics and optimisation behind modern AI systems.
+                        </p>
+
+                        <span class="tag">Python</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Machine Learning</span>
+
+                    </div>
+
+
+                    <div class="project">
+
+                        <h3>
+                            3D Graphing Calculator
+                        </h3>
+
+                        <p>
+                            A Python project for visualising multivariable
+                            functions and exploring mathematical structures
+                            interactively.
+                        </p>
+
+                        <span class="tag">Python</span>
+                        <span class="tag">Mathematics</span>
+                        <span class="tag">Visualisation</span>
+
+                    </div>
+
+
+                    <div class="project">
+
+                        <h3>
+                            Dynamical Systems
+                        </h3>
+
+                        <p>
+                            Numerical modelling of chaotic systems including the
+                            Lorenz attractor and double pendulum using
+                            Runge-Kutta methods.
+                        </p>
+
+                        <span class="tag">Python</span>
+                        <span class="tag">Numerical Methods</span>
+                        <span class="tag">Modelling</span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+             ========================= -->
+
+        <section id="contact">
+
+            <div class="container">
+
+                <div class="contact-box">
+
+                    <div class="section-label">
+                        Contact
+                    </div>
+
+                    <h2 class="section-title">
+                        Let's work together.
+                    </h2>
+
+                    <p>
+                        Interested in tutoring, have a question about my work,
+                        or simply want to get in touch?
+                    </p>
+
+                    <a
+                        class="button button-primary"
+                        href="mailto:ljepicdimitri@gmail.com"
+                    >
+                        Email me
+                    </a>
+
+                    <br>
+
+                    <a
+                        class="email"
+                        href="mailto:ljepicdimitri@gmail.com"
+                    >
+                        ljepicdimitri@gmail.com
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 Dimitri Ljepic · Mathematics & Computer Science
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script>
+
+        // Small enhancement:
+        // Highlight the navigation link for the section
+        // currently being viewed.
+
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-links a");
+
+        window.addEventListener("scroll", () => {
+
+            let currentSection = "";
+
+            sections.forEach(section => {
+
+                const sectionTop = section.offsetTop;
+
+                if (window.scrollY >= sectionTop - 150) {
+                    currentSection = section.getAttribute("id");
+                }
+
+            });
+
+            navLinks.forEach(link => {
+
+                link.style.color = "";
+
+                if (link.getAttribute("href") === "#" + currentSection) {
+                    link.style.color = "#2563eb";
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
